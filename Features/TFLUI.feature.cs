@@ -167,7 +167,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I select least walking", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 18
- testRunner.And("I update the journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I  click on update journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 19
  testRunner.Then("I should see updated journey time", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -222,7 +222,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I select a routes with least walking", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 28
- testRunner.And("I click on update journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I  click on update journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 29
  testRunner.When("I click on View Details button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -268,7 +268,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I enter \"Invalid Location\" as the start point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 35
- testRunner.And("I enter \"Another Invalid Location \" as the destination", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I enter \"Another Invalid Location\" as the destination", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 36
  testRunner.And("I click on Plan my Joruney button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -311,7 +311,7 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.Given("I naviagate to the TFL Joruney Planner page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 41
- testRunner.When("I click on \"Plan my Joruney\" without entering any locations", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I click on Plan my Joruney without entering any locations", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 42
  testRunner.Then("I should see an error message indicating no locations entered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

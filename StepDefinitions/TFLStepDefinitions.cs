@@ -17,6 +17,7 @@ namespace TFLUIAutomation.StepDefinitions
             {
                 // driver= container.Resolve<IWebDriver>();
                 homePage = container.Resolve<HomePage>();
+              
 
             }
         }
@@ -24,7 +25,7 @@ namespace TFLUIAutomation.StepDefinitions
         [Given(@"I naviagate to the TFL journey planner page")]
         public void GivenINaviagateToTheTFLJourneyPlannerPage()
         {
-            homePage.NavigateTotflSite("homepage");
+            homePage.NavigateTotflSite("tflUrl");
             homePage.ClickOnAcceptCookiesButton();  
             homePage.verifytheHomePageText();
 
@@ -36,6 +37,13 @@ namespace TFLUIAutomation.StepDefinitions
             homePage.EnterStartPointText(startPoint);
 
         }
+        [When(@"I enter ""([^""]*)"" as the destination")]
+        public void WhenIEnterAsTheDestination(string destination)
+        {
+            homePage.EnterDestinationText(destination);
+        }
+    
+
 
         [When(@"I  select ""([^""]*)"" as the destination")]
         public void WhenISelectAsTheDestination(string destination)
@@ -71,7 +79,7 @@ namespace TFLUIAutomation.StepDefinitions
         public void WhenIClickOnEditPreferenceButton()
         {
             
-            homePage.VerifyUpdatedTimes(); 
+            //homePage.VerifyUpdatedTimes(); 
             homePage.ClickOnEditPreferenceButton();
         }
 
@@ -81,15 +89,14 @@ namespace TFLUIAutomation.StepDefinitions
             homePage.selectleasingWalking();
         }
 
-
-        [When(@"I update the journey")]
-        public void WhenIUpdateTheJourney()
+        [When(@"I  click on update journey")]
+        public void WhenIClickOnUpdateJourney()
         {
-          Assert.IsTrue(homePage.VerifyUpdatedTimes());
-           // homePage.
-
+           homePage.ClickOnUpdateJourney();
         }
 
+
+        
         [Then(@"I should see updated journey time")]
         public void ThenIShouldSeeUpdatedJourneyTime()
         {
@@ -100,40 +107,49 @@ namespace TFLUIAutomation.StepDefinitions
         [When(@"I click on View Details button")]
         public void WhenIClickOnViewDetailsButton()
         {
-          homePage.VerifyUpdatedTimes();
-            homePage.verifytheHomePageText();
+            homePage.ClickOnViewDetails();
+           Assert.IsTrue(homePage.verifyAccessInformation());
            
         }
 
         [Then(@"I should see complete access information for Covent Garden Underground Station")]
         public void ThenIShouldSeeCompleteAccessInformationForCoventGardenUndergroundStation()
         {
-           homePage.verifytheHomePageText();
+           Assert.IsTrue(homePage.verifyAccessInformation());
         }
 
         [Given(@"I navigate to the TFL Journey Planner page")]
-        public void GivenINavigateToTheTFLJourneyPlannerPage()
-        {
+        //public void GivenINavigateToTheTFLJourneyPlannerPage()
+        //{
+        //    //homePage.NavigateTotflSite("tflUrl");
+        //    //homePage.ClickOnAcceptCookiesButton();
+        //    ////homePage.EnterStartPointText("Invalid Location");
+        //    ////homePage.EnterDestinationText("Another Invalid Location");
+        //    //homePage.ClickOnPlanJourneyButton();   
+          
 
-            homePage.NavigateTotflSite("homepage");
+        //}
 
-
-        }
-
-        [When(@"I enter ""([^""]*)"" as the destination")]
-        public void WhenIEnterAsTheDestination(string p0)
-        {
-            homePage.EnterDestinationText(p0);
-        }
+        
 
         [When(@"I click on Plan my Joruney button")]
         public void WhenIClickOnPlanMyJoruneyButton()
         {
+            homePage.NavigateTotflSite("tflUrl");
+            homePage.ClickOnAcceptCookiesButton();
             homePage.ClickOnPlanJourneyButton();
+
         }
 
         [Then(@"I should see no results available")]
         public void ThenIShouldSeeNoResultsAvailable()
+        {
+            Assert.IsTrue(homePage.verifyNoResults());
+            homePage.selectleasingWalking();
+        }
+
+        [When(@"I select a routes with least walking")]
+        public void WhenISelectARoutesWithLeastWalking()
         {
             homePage.selectleasingWalking();
         }
@@ -141,35 +157,24 @@ namespace TFLUIAutomation.StepDefinitions
         [Given(@"I naviagate to the TFL Joruney Planner page")]
         public void GivenINaviagateToTheTFLJoruneyPlannerPage()
         {
-            homePage.NavigateTotflSite("homepage");
+            homePage.NavigateTotflSite("tflUrl");
         }
 
-        [When(@"I click on ""([^""]*)"" without entering any locations")]
-        public void WhenIClickOnWithoutEnteringAnyLocations(string p0)
+        [When(@"I click on Plan my Joruney without entering any locations")]
+        public void WhenIClickOnPlanMyJoruneyWithoutEnteringAnyLocations()
         {
-            Assert.IsTrue(homePage.requiredfieldErrorText());
-
+            homePage.NavigateTotflSite("tflUrl");
+            homePage.ClickOnAcceptCookiesButton();
+            homePage.ClickOnPlanJourneyButton();
+            
         }
 
         [Then(@"I should see an error message indicating no locations entered")]
         public void ThenIShouldSeeAnErrorMessageIndicatingNoLocationsEntered()
         {
-            Assert.IsTrue(homePage.requiredfieldErrorText());
-            
+            Assert.IsTrue(homePage.verifyErrorMessage());
         }
 
-        [When(@"I select a routes with least walking")]
-        public void WhenISelectARoutesWithLeastWalking()
-        {
-            homePage.ClickOnLeastWalkingMethod();
-                
-        }
-
-        [When(@"I click on update journey")]
-        public void WhenIClickOnUpdateJourney()
-        {
-            homePage.ClickOnUpdateJourney();
-        }
 
 
     }
