@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools.V127.DOM;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -48,28 +47,14 @@ namespace TFLUIAutomation.Pages
 
         public void ClickOnPlanJourneyButton()
         {
-
+            //javaScript executor 
             IWebElement planMyJourneyButton = driver.FindElement(By.XPath("//div[@id='plan-a-journey']//input[@id='plan-journey-button']"));
-            driver.Manage().Timeouts().ImplicitWait =TimeSpan.FromSeconds(20);
-            planMyJourneyButton.Click();
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", planMyJourneyButton); //JavaScript Click (For Overlapping Elements):
 
-
-            //IWebElement planMyJourneyButton = driver.FindElement(By.XPath("(//input[@value='Plan my journey'])[1]"));
-            //DefaultWait<IWebElement> wait = new DefaultWait<IWebElement>(planMyJourneyButton);
-            //wait.Timeout = TimeSpan.FromMinutes(2);
-            //wait.PollingInterval = TimeSpan.FromMilliseconds(250);
-
-            //Func<IWebElement, bool> waiter = new Func<IWebElement, bool>((IWebElement planMyJourneyButton) =>
-            //{
-            //    var planJourneyText = planMyJourneyButton.GetAttribute("Plan my journey");
-            //    if (planJourneyText.Contains("Plan my journey"))
-            //    {
-            //        return true;
-
-            //    }
-            //    Console.WriteLine("Plan my journey");
-            //    return false;
-            //}); wait.Until(waiter);
+            //implict Waits
+            //IWebElement planMyJourneyButton = driver.FindElement(By.XPath("//div[@id='plan-a-journey']//input[@id='plan-journey-button']"));
+            //driver.Manage().Timeouts().ImplicitWait =TimeSpan.FromSeconds(20);
+            //planMyJourneyButton.Click()
         }
 
 

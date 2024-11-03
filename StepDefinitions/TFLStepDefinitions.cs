@@ -26,31 +26,22 @@ namespace TFLUIAutomation.StepDefinitions
         public void GivenINaviagateToTheTFLJourneyPlannerPage()
         {
             homePage.NavigateTotflSite("tflUrl");
-            homePage.ClickOnAcceptCookiesButton();  
+            homePage.ClickOnAcceptCookiesButton();
             homePage.verifytheHomePageText();
-
         }
 
         [When(@"I enter ""([^""]*)"" as the start point")]
         public void WhenIEnterAsTheStartPoint(string startPoint)
         {
             homePage.EnterStartPointText(startPoint);
-
+                
         }
-        [When(@"I enter ""([^""]*)"" as the destination")]
-        public void WhenIEnterAsTheDestination(string destination)
-        {
-            homePage.EnterDestinationText(destination);
-        }
-    
-
 
         [When(@"I  select ""([^""]*)"" as the destination")]
-        public void WhenISelectAsTheDestination(string destination)
+        public void WhenISelectAsTheDestination(string destinationPoint)
         {
-            homePage.EnterDestinationText(destination);
+            homePage.EnterDestinationText(destinationPoint); 
         }
-
 
         [When(@"I click on Plan my journey button")]
         public void WhenIClickOnPlanMyJourneyButton()
@@ -61,91 +52,31 @@ namespace TFLUIAutomation.StepDefinitions
         [Then(@"I  should see valid walking and cycling times")]
         public void ThenIShouldSeeValidWalkingAndCyclingTimes()
         {
-            Assert.IsTrue(homePage.VerifyWalkingAndCyclingTimes());
-        }
-      
-
-        [Given(@"Plan a journey from leicester sqaure to Covent Garden")]
-        public void GivenPlanAJourneyFromLeicesterSqaureToCoventGarden(string startPoint,string destinationPoint)
-        {
-           // homePage.NavigateTotflSite("homepage");
-            //homePage.EnterStartPointText(startPoint);
-            //homePage.EnterDestinationText(destinationPoint);
-            //homePage.ClickOnPlanJourneyButton();
-          
+           Assert.IsTrue(homePage.VerifyWalkingAndCyclingTimes());  
         }
 
         [When(@"I click on Edit Preference button")]
         public void WhenIClickOnEditPreferenceButton()
         {
-            
-            //homePage.VerifyUpdatedTimes(); 
-            homePage.ClickOnEditPreferenceButton();
+            homePage.ClickOnPlanJourneyButton();
         }
 
         [When(@"I select least walking")]
         public void WhenISelectLeastWalking()
         {
-            homePage.selectleasingWalking();
+            homePage.selectleasingWalking();    
         }
 
         [When(@"I  click on update journey")]
         public void WhenIClickOnUpdateJourney()
         {
-           homePage.ClickOnUpdateJourney();
+            homePage.ClickOnUpdateJourney();
         }
 
-
-        
         [Then(@"I should see updated journey time")]
         public void ThenIShouldSeeUpdatedJourneyTime()
         {
-            Assert.IsTrue(homePage.VerifyUpdatedTimes());
-
-        }
-
-        [When(@"I click on View Details button")]
-        public void WhenIClickOnViewDetailsButton()
-        {
-            homePage.ClickOnViewDetails();
-           Assert.IsTrue(homePage.verifyAccessInformation());
-           
-        }
-
-        [Then(@"I should see complete access information for Covent Garden Underground Station")]
-        public void ThenIShouldSeeCompleteAccessInformationForCoventGardenUndergroundStation()
-        {
-           Assert.IsTrue(homePage.verifyAccessInformation());
-        }
-
-        [Given(@"I navigate to the TFL Journey Planner page")]
-        //public void GivenINavigateToTheTFLJourneyPlannerPage()
-        //{
-        //    //homePage.NavigateTotflSite("tflUrl");
-        //    //homePage.ClickOnAcceptCookiesButton();
-        //    ////homePage.EnterStartPointText("Invalid Location");
-        //    ////homePage.EnterDestinationText("Another Invalid Location");
-        //    //homePage.ClickOnPlanJourneyButton();   
-          
-
-        //}
-
-        
-
-        [When(@"I click on Plan my Joruney button")]
-        public void WhenIClickOnPlanMyJoruneyButton()
-        {
-            homePage.NavigateTotflSite("tflUrl");
-            homePage.ClickOnAcceptCookiesButton();
-            homePage.ClickOnPlanJourneyButton();
-
-        }
-
-        [Then(@"I should see no results available")]
-        public void ThenIShouldSeeNoResultsAvailable()
-        {
-            Assert.IsTrue(homePage.verifyNoResults());
-            homePage.selectleasingWalking();
+            Assert.IsTrue(homePage.VerifyUpdatedTimes());   
         }
 
         [When(@"I select a routes with least walking")]
@@ -154,26 +85,61 @@ namespace TFLUIAutomation.StepDefinitions
             homePage.selectleasingWalking();
         }
 
+        [When(@"I click on View Details button")]
+        public void WhenIClickOnViewDetailsButton()
+        {
+            homePage.ClickOnViewDetails();
+            Assert.IsTrue(homePage.verifyAccessInformation());
+        }
+
+        [Then(@"I should see complete access information for Covent Garden Underground Station")]
+        public void ThenIShouldSeeCompleteAccessInformationForCoventGardenUndergroundStation()
+        {
+            Assert.IsTrue(homePage.verifyAccessInformation());
+        }
+
         [Given(@"I naviagate to the TFL Joruney Planner page")]
         public void GivenINaviagateToTheTFLJoruneyPlannerPage()
         {
             homePage.NavigateTotflSite("tflUrl");
+            homePage.ClickOnAcceptCookiesButton();  
+        }
+
+        [When(@"I enter ""([^""]*)"" as the destination")]
+        public void WhenIEnterAsTheDestination(string destinationPoint)
+        {
+            homePage.EnterDestinationText(destinationPoint);
+        }
+
+        [When(@"I click on Plan my Joruney button")]
+        public void WhenIClickOnPlanMyJoruneyButton()
+        {
+            homePage.ClickOnPlanJourneyButton();
+        }
+
+        [Then(@"I should see no results available")]
+        public void ThenIShouldSeeNoResultsAvailable()
+        {
+            Assert.IsTrue(homePage.verifyNoResults());
         }
 
         [When(@"I click on Plan my Joruney without entering any locations")]
         public void WhenIClickOnPlanMyJoruneyWithoutEnteringAnyLocations()
         {
             homePage.NavigateTotflSite("tflUrl");
-            homePage.ClickOnAcceptCookiesButton();
             homePage.ClickOnPlanJourneyButton();
-            
+            homePage.ClickOnPlanJourneyButton();
         }
+
 
         [Then(@"I should see an error message indicating no locations entered")]
         public void ThenIShouldSeeAnErrorMessageIndicatingNoLocationsEntered()
         {
             Assert.IsTrue(homePage.verifyErrorMessage());
         }
+
+
+
 
 
 
