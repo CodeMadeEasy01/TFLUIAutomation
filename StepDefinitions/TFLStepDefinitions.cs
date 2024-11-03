@@ -127,7 +127,7 @@ namespace TFLUIAutomation.StepDefinitions
         public void WhenIClickOnPlanMyJoruneyWithoutEnteringAnyLocations()
         {
             homePage.NavigateTotflSite("tflUrl");
-            homePage.ClickOnPlanJourneyButton();
+            homePage.ClickOnAcceptCookiesButton();
             homePage.ClickOnPlanJourneyButton();
         }
 
