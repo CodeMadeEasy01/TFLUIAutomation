@@ -16,6 +16,8 @@ namespace TFLUIAutomation.Hooks
         {
             IObjectContainer container;
 
+           
+
             public Hooks(IObjectContainer _container)
             {
                 container = _container;
@@ -38,8 +40,18 @@ namespace TFLUIAutomation.Hooks
             {
                 driver?.Quit();
             }
+
+
+            public void TakeScreenShotAtPointOfTesFailure(string directory, string scenarioName)
+            {
+                Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+                string path = directory + scenarioName + DateTime.Now.ToString("YYYY-MM-dd") + ".png";
+                string Screenshot = screenshot.AsBase64EncodedString;
+                byte[] screenshotAsByteArray = screenshot.AsByteArray;
+               // object ScreenshotImageFormat = null;
+                //screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
+            }
         }
 
     }
-
 }
